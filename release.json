@@ -2,7 +2,7 @@
     "version":  "1.0.1",
     "artifact":  "releases/fishingplus-1.0.1.jar",
     "latest":  "latest/fishingplus.jar",
-    "sha256":  "4548ebe0f4d299f20cf7a7efda6cfe88fdd811da373fadd71d7d0f0a786e8923",
-    "built_at_utc":  "2026-05-22T08:51:14Z",
+    "sha256":  "bf6fe96f5a7f9aeb717a4c9974e740746cc5a3a09bb9a0fcea66f7afc35c7f65",
+    "built_at_utc":  "2026-05-22T08:52:11Z",
     "source":  "FishingPlus release script"
 }
