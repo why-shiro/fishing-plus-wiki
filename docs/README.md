@@ -1,43 +1,30 @@
----
-description: FishingPlus eklentisinin teknik referansı — Bukkit/Paper 1.21 için.
----
+﻿# FishingPlus Dokumantasyonu
 
-# FishingPlus
+FishingPlus, Minecraft balikciligini biyom, zaman, yem, olta parcalari, booster, totem, hotspot, sea event, guild, turnuva, market ve processing sistemleriyle genisleten Paper eklentisidir.
 
-FishingPlus, vanilya balık tutma akışını genişleten modüler bir Bukkit
-eklentisidir. Bu site eklentinin tüm alt sistemlerini, kullandıkları
-YAML dosyalarını ve davranış kurallarını teknik bir referans olarak
-listeler.
+Bu dokumantasyon iki kitle icin yazildi:
 
-## Bu doküman ne içerir?
+- Oyuncular: Hangi menude ne var, baliklar nasil bulunur, market nasil calisir, guild ve turnuvalar ne ise yarar?
+- Sunucu sahipleri: Hangi YML ne yapar, ItemsAdder nasil baglanir, dil sistemi nasil kurulur, event scriptleri nasil yazilir?
 
-- **Genel bakış** — mimari, ana sınıf, stats merge zinciri.
-- **Konfigürasyon dosyaları** — `settings.yml`, `fish.yml`, `baits.yml`
-  ve diğerlerinin şemaları.
-- **Sistemler** — balık RNG’si, yakalama modları, oltalar, yemler,
-  hotspot/booster/totem, profil, başarım, turnuva, market, bounty,
-  spoilage, environment, işleme tesisleri, akvaryum kova, journal,
-  lokalizasyon ve daha fazlası.
-- **Referans** — komut listesi, izin hiyerarşisi, veritabanı, geliştirici
-  notları.
+## Okuma Sirasi
 
-## Hızlı bilgiler
+Yeni baslayan bir oyuncuysaniz once [Oyuncu Rehberi](01-player-guide.md) sayfasini okuyun. Sunucu kuruyorsaniz [Kurulum ve Yonetim](02-admin-installation.md) ile baslayin, sonra [YML Referansi](04-configuration-reference.md) ve [ItemsAdder ve Entegrasyonlar](05-itemsadder-and-integrations.md) sayfalarina gecin.
 
-| Alan | Değer |
-|------|-------|
-| Ana sınıf | `net.neostellar.fishingPlus.FishingPlus` |
-| API sürümü | `1.21` (Bukkit / Paper) |
-| Zorunlu bağımlılıklar | `ProtocolLib`, `Vault` |
-| Yumuşak bağımlılıklar | `PlaceholderAPI`, `ItemsAdder`, `WorldGuard`, `GriefPrevention` |
-| Veritabanı | SQLite (varsayılan) veya PostgreSQL |
-| Diller | `en`, `tr` |
+## Ana Basliklar
 
-## Nereden başlamalı?
+- [Oyuncu Rehberi](01-player-guide.md)
+- [Kurulum ve Yonetim](02-admin-installation.md)
+- [Sistemler](03-systems.md)
+- [YML Referansi](04-configuration-reference.md)
+- [ItemsAdder ve Entegrasyonlar](05-itemsadder-and-integrations.md)
+- [Sea Events Scripting](06-sea-events-scripting.md)
+- [PlaceholderAPI](07-placeholders.md)
+- [Sorun Giderme](08-troubleshooting.md)
+- [v1.0.4 Notlari](09-release-1.0.4.md)
 
-- [Genel Mimari](getting-started/architecture.md)
-- [Konfigürasyon Dosyaları](getting-started/configuration-files.md)
-- [Komut Listesi](reference/commands.md)
+## Eklentinin Ana Felsefesi
 
-> Bu bir referans dokümanıdır; promosyon veya kurulum kılavuzu değildir.
-> Davranış kuralları doğrudan kaynak koddan ve YAML şemalarından
-> türetilmiştir.
+FishingPlus'ta mekanik ayarlar, dil dosyalari ve GUI ayarlari birbirinden ayrilmaya calisir. Bu sayede sunucu sahibi bir baligin yakalanma kosullarini degistirirken ayni anda uc farkli dil dosyasinda mekanik ayar kopyalamaz. Dil dosyalari gorunen metinleri, ana YML dosyalari ise sistemi ve ekonomiyi yonetir.
+
+Oyuncu bazli dil destegi hedeflenir. Bir oyuncu Turkce, baska bir oyuncu Ingilizce veya Almanca menuleri gorebilir. Eksik ceviri oldugunda fallback devreye girer.

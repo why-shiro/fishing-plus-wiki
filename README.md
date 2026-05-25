@@ -1,98 +1,84 @@
-# FishingPlus Docs Site
+﻿# FishingPlus Wiki
 
-`docs/` klasöründeki Markdown’ı GitBook tarzı bir SPA olarak yayınlayan
-Vite + React + TypeScript + Tailwind projesi.
+FishingPlus, Minecraft'taki vanilla balik tutma dongusunu daha okunabilir, ilerlemeli ve sunucu ekonomisine baglanabilir bir sisteme donusturen Paper eklentisidir. Eklenti baliklari biyom, saat, ay, yem, olta parcasi, aktif booster, totem, hotspot, sea event ve oyuncu ilerlemesi gibi bircok etkene gore secip oyuncuya koleksiyon, pazar, guild, turnuva ve uretim akislari sunar.
 
-## Komutlar
+Bu wiki, oyuncularin eklentiyi nasil oynayacagini ve sunucu sahiplerinin tum YML dosyalarini nasil yonetecegini anlatmak icin hazirlandi. ItemsAdder kullanan sunucular, vanilla CustomModelData kullanan sunucular, cok dilli sunucular ve PlaceholderAPI entegrasyonu kullanan paneller icin ayri bolumler vardir.
 
-```bash
-cd site
-npm install         # bağımlılıklar
-npm run dev         # http://localhost:5173 — canlı yeniden yükleme
-npm run typecheck   # TS doğrulama
-npm run build       # dist/ klasörüne statik build
-npm run preview     # build’i lokal sunucuda denemek için
-```
+## Hizli Baslangic
 
-> Node 20+ önerilir.
+1. Sunucuda Paper/Purpur 1.21.x ve Java 21 kullanin.
+2. `ProtocolLib` ve `Vault` kurulu olsun. Ekonomi icin Vault destekli bir ekonomi plugini gerekir.
+3. Istege bagli olarak `PlaceholderAPI`, `ItemsAdder`, `MythicMobs`, `WorldGuard` veya `GriefPrevention` kurabilirsiniz.
+4. FishingPlus jar dosyasini `plugins` klasorune koyun.
+5. Sunucuyu bir kez baslatip kapatin. Bu adim config dosyalarini olusturur.
+6. `plugins/FishingPlus` altindaki YML dosyalarini duzenleyin.
+7. Sunucuyu tekrar baslatin veya desteklenen durumlarda `/fishingplus reload` kullanin.
 
-## İçerik kaynağı
+## Oyuncu Icin Kisa Ozet
 
-Markdown dosyaları **`../docs/`** altında tutulur. Site bunları
-`import.meta.glob('../../docs/**/*.md', ...)` ile build sırasında
-inline’a alır; çalışma zamanında fetch yapılmaz, tamamen statik
-çıkar.
+- Baliklar her yerde ayni cikmaz. Biyom, ay, saat ve kullanilan yem onemlidir.
+- Yakaladiginiz baliklar Journal/Ansiklopedi icinde kesfedilir.
+- Kesfedilmemis baliklar markette gizli gorunur ama nerede bulunabilecegine dair ipuclari gosterilebilir.
+- Fish Market fiyatlari oyun ici gunlere gore degisebilir. Cok tutulan baliklar ucuzlayabilir, az tutulanlar pahalanabilir.
+- Bait, rod part, booster, totem ve hotspot sistemleri RNG uzerinde farkli etkiler yaratir.
+- Sea Events aktif oldugunda balikcilik kosullari, ortam efektleri ve riskler degisebilir.
+- Guild, turnuva, bounty ve achievement sistemleri oyunculara uzun vadeli hedef verir.
 
-Yeni sayfa eklemek için:
+## Dokuman Haritasi
 
-1. `docs/<bölüm>/<dosya>.md` oluştur (opsiyonel olarak YAML frontmatter
-   `description:` alanı koy).
-2. `site/src/lib/navigation.ts` içindeki ilgili `NavSection`’a
-   `{ title, path, slug }` ekle. `slug` yeni dosyanın `docs/`’a göreli
-   yoludur (örn. `world/new-system`).
-3. Dev sunucusu otomatik yeniler.
+- [Oyuncu Rehberi](docs/01-player-guide.md): menuler, balik tutma, market, journal, guild, turnuva ve gunluk oynanis.
+- [Kurulum ve Yonetim](docs/02-admin-installation.md): gereksinimler, komutlar, izinler, database, guncelleme akisi.
+- [Sistemler](docs/03-systems.md): RNG, market, spoilage, processing, bucket, rod parts, booster, totem, guild, sea event mantigi.
+- [YML Referansi](docs/04-configuration-reference.md): tum ana YML ve GUI YML dosyalari.
+- [ItemsAdder ve Entegrasyonlar](docs/05-itemsadder-and-integrations.md): IA model tanimlari, PAPI, MythicMobs, WorldGuard, Vault, ProtocolLib.
+- [Sea Events Scripting](docs/06-sea-events-scripting.md): event fazlari, action sistemi, selector ve placeholder mantigi.
+- [PlaceholderAPI](docs/07-placeholders.md): kullanilabilir placeholder gruplari.
+- [Sorun Giderme](docs/08-troubleshooting.md): en sik hatalar ve cozumleri.
+- [v1.0.4 Notlari](docs/09-release-1.0.4.md): son surumdeki onemli degisiklikler.
 
-## Mimari
+## Indirme
 
-- `src/lib/content.ts` — markdown loader + arama indeksi.
-- `src/lib/navigation.ts` — kenar çubuğu + prev/next için tek doğruluk
-  kaynağı.
-- `src/components/Layout.tsx` — kabuk: TopBar, Sidebar (desktop /
-  mobile drawer), arama dialogu.
-- `src/components/MarkdownPage.tsx` — react-markdown + remark-gfm +
-  rehype-slug + rehype-autolink-headings + rehype-highlight.
-- `src/components/OnThisPage.tsx` — sağ kenardaki “bu sayfada” menüsü
-  (IntersectionObserver ile aktif başlığı işaretler).
-- `src/components/SearchDialog.tsx` — `Ctrl+K` ile açılan arama
-  (basit `includes` skorlaması).
-- Tema: `light` / `dark`. `localStorage: fp-theme` anahtarı kullanılır,
-  ilk render öncesi `index.html`’deki inline script flash’ı önler.
+Son yayinlanan surum GitHub Releases uzerindedir:
 
-## Dağıtım
+- [FishingPlus v1.0.4](https://github.com/why-shiro/fishing-plus-wiki/releases/tag/v1.0.4)
 
-Build çıktısı tamamen statik (`dist/`). SPA olduğu için sunucunun
-404’leri `index.html`’e fallback etmesi gerekir.
+## Temel Komutlar
 
-### Vercel
+| Komut | Aciklama |
+| --- | --- |
+| `/fishingplus` veya `/fp` | Ana oyuncu komutu. Dil, reload ve genel alt komutlar buradan yonetilir. |
+| `/journal` | Balik ansiklopedisini acar. |
+| `/fishmarket` | Fish Market menulerini acar. |
+| `/fishprofile` | Oyuncunun balikcilik profilini acar. |
+| `/olta` veya `/rodparts` | Olta parcalari menulerini acar. |
+| `/baits` | Yem menulerini acar. |
+| `/tournament` | Turnuva durumunu ve katilimi yonetir. |
+| `/fishguild` | Guild menulerini acar. |
+| `/seaevents` | Sea event bilgisini gosterir. |
+| `/fishingadmin` veya `/fishadmin` | Admin menusu. Balik ayarlari, debug ve yonetim ekranlari icin. |
 
-`site/` klasörünü Vercel’de bir proje olarak içeri al. Framework:
-**Vite**. Vercel SPA fallback’i otomatik halleder.
+## Temel Izinler
 
-### Netlify
+| Permission | Aciklama |
+| --- | --- |
+| `fishingplus.player` | Oyuncu komutlari icin temel izin. |
+| `fishingplus.admin` | Admin komutlari ve admin GUI. |
+| `fishingplus.givebait` | Yem verme komutu. |
+| `fishingplus.givebucket` | Bucket verme komutu. |
+| `fishingplus.tournament.admin` | Turnuva admin islemleri. |
+| `fishingplus.admin.hotspot` | Hotspot yonetimi. |
+| `fishingplus.time` | Balikcilik zamani komutlari. |
+| `fishingplus.debug` | Debug/RNG inceleme komutlari. |
+| `fishingplus.protection.bypass` | Koruma kontrollerini bypass eder. |
 
-`site/` → "Deploy site". Build komutu `npm run build`, publish
-klasörü `dist`. `public/_redirects` dosyası zaten SPA fallback için
-yapılandırılmış (`/*  /index.html  200`).
+## Cok Dil Mantigi
 
-### Cloudflare Pages
+FishingPlus, oyuncu bazli dil mantigini hedefler. Bir oyuncu Turkce menuleri gorurken baska bir oyuncu Almanca veya Ingilizce gorebilir. Configlerde ortak mekanik degerler tek yerde tutulur; gorunen isim, lore ve mesajlar `translations` bloklari veya `messages/messages_xx.yml` dosyalari ile ayrilir.
 
-Framework: **Vite**. Build komutu `npm run build`, output `dist`.
-SPA mode için `dist/_redirects` veya `_headers` dosyası
-kopyalanır — `public/_redirects` bu işi görür.
+Fallback mantigi soyledir:
 
-### GitHub Pages
+1. Oyuncunun sectigi dilde ceviri varsa o kullanilir.
+2. Eksikse varsayilan dil veya Ingilizce metin kullanilir.
+3. O da yoksa configteki ana `name`, `display` veya ham key gorunebilir.
 
-GitHub Pages SPA fallback’ı doğrudan desteklemez. İki seçenek:
-
-1. **HashRouter’a geç** — `src/main.tsx` içinde `BrowserRouter`’ı
-   `HashRouter` ile değiştir. URL’ler `/#/…` biçimine geçer ama
-   ekstra yapılandırma gerekmez.
-2. **404.html hack’i** — `dist/index.html`’i `dist/404.html` olarak
-   da kopyala. Bilinmeyen yollar SPA’nın yüklenmesini tetikler.
-
-Repo kökünde değil de `<repo>/site/` yayını için `vite.config.ts`’e
-`base: '/<repo-adı>/'` ekle.
-
-### Statik nginx / Apache
-
-`dist/` klasörünü servis et, 404’leri `index.html`’e yönlendir.
-Örnek nginx satırı:
-
-```
-try_files $uri $uri/ /index.html;
-```
-
-## Lisans
-
-İçerik FishingPlus projesine aittir; bu site iskeleti aynı repo
-altındadır.
+Bu sayede sunucu sahibi her yeni dil icin tum mekanik dosyalari kopyalamak zorunda kalmaz. Sadece cevirilecek alanlar eklenir.

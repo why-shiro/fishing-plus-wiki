@@ -1,63 +1,57 @@
-# Table of contents
+﻿# Table of contents
 
-* [FishingPlus](README.md)
+* [FishingPlus Dokumantasyonu](README.md)
 
-## Başlarken
+## Baslangic
+
+* [Oyuncu Rehberi](01-player-guide.md)
+* [Kurulum ve Yonetim](02-admin-installation.md)
+
+## Ana Sistemler
+
+* [Sistemler](03-systems.md)
+* [YML Referansi](04-configuration-reference.md)
+* [ItemsAdder ve Entegrasyonlar](05-itemsadder-and-integrations.md)
+* [Sea Events Scripting](06-sea-events-scripting.md)
+* [PlaceholderAPI](07-placeholders.md)
+
+## Destek
+
+* [Sorun Giderme](08-troubleshooting.md)
+* [v1.0.4 Notlari](09-release-1.0.4.md)
+
+## Ek Moduler Referans
 
 * [Genel Mimari](getting-started/architecture.md)
-* [Konfigürasyon Dosyaları](getting-started/configuration-files.md)
-
-## Balık Tutma
-
-* [Balık Türleri](fishing/fish-types.md)
-* [RNG ve Yakalama Mantığı](fishing/rng.md)
-* [Yakalama Modları](fishing/modes.md)
-* [Olta Parçaları](fishing/rod-parts.md)
-
-## Eşyalar
-
+* [Konfigurasyon Dosyalari](getting-started/configuration-files.md)
+* [Balik Turleri](fishing/fish-types.md)
+* [RNG ve Yakalama Mantigi](fishing/rng.md)
+* [Yakalama Modlari](fishing/modes.md)
+* [Olta Parcalari](fishing/rod-parts.md)
 * [Yemler](items/baits.md)
 * [Boosterlar](items/boosters.md)
 * [Totemler](items/totems.md)
-
-## Dünya
-
 * [Hotspot Sistemi](world/hotspots.md)
 * [Hava ve Ay Evresi](world/environment.md)
-* [Tazelik (Spoilage)](world/spoilage.md)
+* [Tazelik Spoilage](world/spoilage.md)
 * [Akvaryum Kovalar](world/aquarium-buckets.md)
-
-## İlerleme
-
 * [Profil ve Seviye](progression/profile.md)
-* [Başarımlar](progression/achievements.md)
+* [Basarimlar](progression/achievements.md)
 * [Turnuvalar](progression/tournaments.md)
-
-## Ekonomi
-
 * [Market](economy/market.md)
 * [Bounty Panosu](economy/bounty.md)
-* [NPC Tüccarı](economy/npc-trader.md)
-
-## İşleme
-
+* [NPC Tuccari](economy/npc-trader.md)
 * [Tesisler ve Tarifler](processing/facilities.md)
 * [Malzemeler](processing/ingredients.md)
-* [Sandık Otomasyonu](processing/automation.md)
-
-## Diğer Sistemler
-
-* [Balık Günlüğü](misc/journal.md)
+* [Sandik Otomasyonu](processing/automation.md)
+* [Balik Gunlugu](misc/journal.md)
 * [Lokalizasyon](misc/localization.md)
 * [Sohbet](misc/chat.md)
 * [Hologramlar](misc/holograms.md)
-* [Bölge Koruma](misc/protection.md)
-* [Yaklaşma Overlay’i](misc/overlay.md)
-* [PlaceholderAPI](misc/placeholderapi.md)
-
-## Referans
-
+* [Bolge Koruma](misc/protection.md)
+* [Yaklasma Overlayi](misc/overlay.md)
+* [PlaceholderAPI Eski Referans](misc/placeholderapi.md)
 * [Komutlar](reference/commands.md)
-* [İzinler](reference/permissions.md)
-* [Veritabanı](reference/database.md)
-* [Geliştirici Notları](reference/developer-notes.md)
+* [Izinler](reference/permissions.md)
+* [Veritabani](reference/database.md)
+* [Gelistirici Notlari](reference/developer-notes.md)
